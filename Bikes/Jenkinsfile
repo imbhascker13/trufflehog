@@ -22,7 +22,7 @@ node {
   }
 	 
   stage('Sonar Analysis'){
-        withSonarQubeEnv('SonarQube'){
+        withSonarQubeEnv('Sonarqube'){
          sh 'mvn sonar:sonar'
         }
         }
@@ -58,7 +58,12 @@ node {
         server.upload(uploadSpec)
         
         }
-
+stage('Input for deploy in test server') {  
+   input('Do you want to deploy in test server proceed?')      
+        }
+  stage('Downstream Build -- Docker Deployment'){
+	 build 'qa_analysis_for_bikenbrands'
+	}
 }
 notify('Job Completed')   
 } catch (err) {
