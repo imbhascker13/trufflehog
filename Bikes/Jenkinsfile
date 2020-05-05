@@ -6,7 +6,8 @@ node {
    git branch:'master', url:'https://github.com/imbhascker13/bikenbrands.git'
   }
    stage('TruffleHog') {
-     sh label: '', script: 'trufflehog --regex --entropy=False https://github.com/imbhascker13/trufflehog.git'
+    // sh label: '', script: 'trufflehog --regex --entropy=False https://github.com/imbhascker13/trufflehog.git'
+	sh 'trufflehog --regex --entropy=False https://github.com/imbhascker13/trufflehog.git'  
   }	 
   stage('Input to continue forther') {
    input('git checkout done Do you want to forther proceed?')  
