@@ -3,11 +3,12 @@ node {
  notify('Job Started') 
 	 
   stage('Git-Checkout') {
-   git branch:'master', url:'https://github.com/imbhascker13/bikenbrands.git'
+  // git branch:'master', url:'https://github.com/imbhascker13/bikenbrands.git'
+	 git url 'https://imbhascker13@bitbucket.org/accelerators-devops/bike-showroom-app.git'
   }
    stage('TruffleHog') {
     // sh label: '', script: 'trufflehog --regex --entropy=False https://github.com/imbhascker13/trufflehog.git'
-	sh 'trufflehog --regex --entropy=False https://github.com/imbhascker13/trufflehog.git'  
+	sh 'trufflehog --regex --entropy=False  https://imbhascker13@bitbucket.org/accelerators-devops/bike-showroom-app.git'  
   }	 
   stage('Input to continue forther') {
    input('git checkout done Do you want to forther proceed?')  
